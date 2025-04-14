@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kathiona | About Me</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f48fb1, #f06292);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8bbd0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #ec407a, #f06292);
+      border-radius: 10px;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      margin: 20px;
+      padding: 40px;
+      min-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .nav-item a:hover {
+      color: #f06292;
+    }
+
+    .nav-item.active a {
+      color: #f06292;
+      font-weight: normal;
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+      padding-top: 80px;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
+
+    .about-img {
+      border: 6px solid #f06292;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 300px;
+      height: 300px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 60px rgba(240, 98, 146, 0.7);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .about-img:hover {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text {
+      max-width: 600px;
+      align-self: flex-start;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards 0.2s;
+    }
+
+    .about-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .about-text h1 span {
+      color: #f06292;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #fce4ec;
+      text-align: justify;
+    }
+
+    .details-section {
+      margin-top: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards 0.5s;
+    }
+
+    .personal-section {
+      margin-top: 100px;
+    }
+
+    .personal-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+    }
+
+    .personal-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #f06292;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    .personal-card:hover {
+      transform: translateY(-5px);
+      background-color: #f06292;
+      box-shadow: 0 6px 18px rgba(240, 98, 146, 0.8);
+      filter: brightness(1.2);
+    }
+
+    .personal-card:active {
+      transform: translateY(2px);
+      box-shadow: 0 6px 18px rgba(240, 98, 146, 0.8);
+      filter: brightness(1.4);
+    }
+
+    .personal-card strong {
+      color: #f06292;
+      display: block;
+      margin-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .personal-card:hover strong {
+      color: white;
+    }
+
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards 0.7s;
+    }
+
+    .interest-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #f06292;
+      padding: 20px;
+      width: 180px;
+      text-align: center;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    .interest-box:hover {
+      transform: translateY(-5px);
+      background-color: #f06292;
+      box-shadow: 0 6px 18px rgba(240, 98, 146, 0.8);
+      filter: brightness(1.2);
+      color: white;
+    }
+
+    .interest-box:active {
+      box-shadow: 0 6px 18px rgba(240, 98, 146, 0.8);
+      filter: brightness(1.3);
+    }
+
+    .interest-box i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #f06292;
+      transition: color 0.3s ease;
+    }
+
+    .interest-box:hover i {
+      color: white;
+    }
+
+    .interest-box p {
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .interest-box:hover p {
+      color: white;
+    }
+
+    .details-section h2 {
+      font-size: 2rem;
+      color: #f06292;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .about-text {
+        margin-top: 10px;
+      }
+    }
+
+  
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      display: none;
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+
+    #backToTop:hover {
+      background-color: #ec407a;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="top">
+    <nav class="navbar">
+      <div class="logo">Kathiona</div>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item active"><a href="aboutme.html">About Me</a></li> 
+        <li class="nav-item"><a href="education.html">Education</a></li>
+        <li class="nav-item"><a href="skills.html">Skills</a></li> 
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section class="about">
+      <div class="about-img">
+        <img src="me.jfif" alt="Kathiona">
+      </div>
+      <div class="about-text">
+        <h1>About <span>Me</span></h1>
+        <p>
+          Hi! I'm Kathiona, a second-year IT student majoring in Software Development at Pamantasan ng Lungsod ng San Pablo. I've always been passionate about coding, problem-solving, and exploring new technologies. I love building things—whether it’s a simple program or a full web app and experimenting with different frameworks. My goal is to become a skilled software developer who creates innovative and efficient solutions that truly make an impact.
+        </p>
+      </div>
+    </section>
+
+<section class="details-section personal-section">
+  <h2><span class="white-text">Personal</span> <span class="pink-text">Details</span></h2>
+  <div class="personal-info">
+    <div class="personal-card"><strong>Name</strong> Kathiona E. Brul</div>
+    <div class="personal-card"><strong>Age</strong> 19</div>
+    <div class="personal-card"><strong>Birthdate</strong> August 29, 2005</div>
+    <div class="personal-card"><strong>Gender</strong> Female</div>
+    <div class="personal-card"><strong>Civil Status</strong> Single</div>
+    <div class="personal-card"><strong>Address</strong> San Gabriel, San Pablo City</div>
+    <div class="personal-card"><strong>Email</strong> kathiona@gmail.com</div>
+    <div class="personal-card"><strong>Contact</strong> 09123456789</div>
+  </div>
+</section>
+
+<section class="details-section">
+  <h2><span class="white-text">My</span> <span class="pink-text">Interests</span></h2>
+  <div class="interests">
+    <div class="interest-box"><i class="fas fa-music"></i><p>Music</p></div>
+    <div class="interest-box"><i class="fas fa-code"></i><p>Coding</p></div>
+    <div class="interest-box"><i class="fas fa-gamepad"></i><p>Gaming</p></div>
+    <div class="interest-box"><i class="fas fa-pencil-alt"></i><p>Drawing</p></div>
+    <div class="interest-box"><i class="fas fa-film"></i><p>Watching Movies</p></div>
+  </div>
+</section>
+
+</div>
+
+
+<button onclick="scrollToTop()" id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+
+window.onscroll = function () {
+  const btn = document.getElementById("backToTop");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

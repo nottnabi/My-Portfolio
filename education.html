@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kathiona | Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f48fb1, #f06292);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8bbd0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #ec407a, #f06292);
+      border-radius: 10px;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      margin: 20px;
+      padding: 40px;
+      min-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .nav-item a:hover {
+      color: #f06292;
+    }
+
+    .nav-item.active a {
+      color: #f06292;
+      font-weight: normal;
+    }
+
+    .education-title {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .education-title h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .edu-white {
+      color: #fff;
+    }
+
+    .cation-pink {
+      color: #f06292;
+    }
+
+    .flip-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding-top: 40px;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 260px;
+      height: 330px;
+      perspective: 1000px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInCard 1s ease forwards;
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .flip-card:nth-child(1) { animation-delay: 0.2s; }
+    .flip-card:nth-child(2) { animation-delay: 0.4s; }
+    .flip-card:nth-child(3) { animation-delay: 0.6s; }
+    .flip-card:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeInCard {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(240, 98, 146, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .flip-card-front {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #f06292;
+    }
+
+    .flip-card-front img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #f06292;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(240, 98, 146, 0.5);
+    }
+
+    .flip-card-front h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      text-shadow: 0 0 6px #f06292;
+    }
+
+    .flip-card-back {
+      background: rgba(235, 76, 155, 0.9);
+      transform: rotateY(180deg);
+      text-align: center;
+    }
+
+    .flip-card-back h2 {
+      font-size: 1.2rem;
+      color: #eebece;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px #f06292;
+    }
+
+    .flip-card-back span {
+      font-size: 0.95rem;
+      color: #fff;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .flip-card-back p {
+      font-size: 0.85rem;
+      color: #f8bbd0;
+    }
+
+  
+    .flip-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">Kathiona</div>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="aboutme.html">About Me</a></li>
+        <li class="nav-item active"><a href="education.html">Education</a></li>
+        <li class="nav-item"><a href="skills.html">Skills</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>      
+    </div>
+
+    <div class="education-title">
+      <h1><span class="edu-white">Edu</span><span class="cation-pink">cation</span></h1>
+    </div>    
+
+    <div class="flip-container">
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="plsp.jfif" alt="PLSP">
+            <h3>College</h3>
+          </div>
+          <div class="flip-card-back">
+            <h2>PAMANTASAN NG LUNGSOD NG SAN PABLO</h2>
+            <span>College</span>
+            <p>2023 - Present</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="spc.jfif" alt="SPC">
+            <h3>Senior High</h3>
+          </div>
+          <div class="flip-card-back">
+            <h2>SAN PABLO COLLEGES</h2>
+            <span>Senior High School</span>
+            <p>2021 - 2023</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="lccs.jfif" alt="LCCS">
+            <h3>High School</h3>
+          </div>
+          <div class="flip-card-back">
+            <h2>LAKES CITY CHRISTIAN SCHOOL</h2>
+            <span>High School</span>
+            <p>2017 - 2021</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="central.jfif" alt="Central">
+            <h3>Elementary</h3>
+          </div>
+          <div class="flip-card-back">
+            <h2>SAN PABLO CENTRAL SCHOOL</h2>
+            <span>Elementary</span>
+            <p>2011 - 2017</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+
+const cards = document.querySelectorAll('.flip-card');
+  
+  window.addEventListener('scroll', () => {
+    cards.forEach(card => {
+      const cardPosition = card.getBoundingClientRect().top; 
+      const screenPosition = window.innerHeight / 1.5; 
+  
+      if (cardPosition < screenPosition) {
+        card.classList.add('show'); 
+      }
+    });
+  });
+  
+  </script>
+  
+</body>
+</html>

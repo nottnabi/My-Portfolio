@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kathiona | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f48fb1, #f06292);
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      margin: 20px;
+      padding: 40px;
+      height: calc(100vh - 40px);
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    .nav-item a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .nav-item a:hover {
+      color: #f06292;
+    }
+    .nav-item.active a {
+      color: #f06292;
+    }
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      margin-top: 10px;
+    }
+    .profile-image {
+      border: 6px solid #f06292;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 400px;
+      height: 400px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 60px rgba(240, 98, 146, 0.7);
+      transition: transform 0.5s ease;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0;
+    }
+    .profile-image:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .intro-text {
+      max-width: 600px;
+      opacity: 0;
+    }
+    .highlight {
+      color: #f06292;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #fce4ec;
+      text-align: justify;
+    }
+    .social-icons {
+      margin: 20px 0;
+      display: flex;
+      gap: 20px;
+      opacity: 0;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #f06292;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      background: white;
+      color: #f06292;
+      text-decoration: none;
+    }
+    .icon:hover {
+      background: #f06292;
+      color: white;
+      transform: scale(1.1);
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.5s; }
+    .delay-2 { animation-delay: 1s; }
+    .delay-3 { animation-delay: 1.5s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .home {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-image {
+        width: 250px;
+        height: 250px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">Kathiona</div>
+      <ul class="nav-links">
+        <li class="nav-item active"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="aboutme.html">About Me</a></li> 
+        <li class="nav-item"><a href="education.html">Education</a></li>
+        <li class="nav-item"><a href="skills.html">Skills</a></li> 
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="home" class="home">
+      <div class="profile-image fade-in">
+        <img src="me.jfif" alt="Kathiona" class="profile-pic" />
+      </div>
+      <div class="intro-text fade-in delay-1">
+        <h1>Hi, It's <span class="highlight">Kathiona</span></h1>
+        <p class="fade-in delay-2">
+          A passionate IT student with a deep focus on Software Development. With a curious mind and an eye for innovation, I’m driven by the ever-evolving world of technology. I thrive on solving complex problems and creating intuitive software solutions that help make life easier.
+        </p>
+        <div class="social-icons fade-in delay-3">
+          <a href="https://facebook.com" target="_blank" class="icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <script>
+   
+    document.addEventListener("DOMContentLoaded", () => {
+      const fadeElements = document.querySelectorAll(".fade-in");
+
+      const appearOnScroll = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      fadeElements.forEach(el => {
+        el.style.animationPlayState = 'paused';
+        appearOnScroll.observe(el);
+      });
+
+
+      const navItems = document.querySelectorAll('.nav-item');
+      const currentPage = window.location.pathname.split("/").pop();
+
+      navItems.forEach(item => {
+        const link = item.querySelector("a");
+        if (link.getAttribute("href") === currentPage) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+
+      const greetText = document.querySelector("h1");
+      const hour = new Date().getHours();
+      let greeting = "Hi, It's";
+
+      greetText.innerHTML = `${greeting} <span class="highlight">Kathiona</span>`;
+    });
+  </script>
+</body>
+</html>
